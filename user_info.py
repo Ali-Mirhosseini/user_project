@@ -12,8 +12,8 @@ def load_data(person_list):
     for row in table.get_children():
         table.delete(row)
 
-    for person in user_list:
-        table.insert("", END, values=person)
+    for user in user_list:
+        table.insert("", END, values=user)
 
 
 def reset_form():
@@ -27,13 +27,13 @@ def reset_form():
 
 
 def save_btn_click():
-    person = (id.get(), user_name.get(), password.get(), status.get(), name.get(), family.get())
-    errors = user_validator(person)
+    user = (id.get(), user_name.get(), password.get(), status.get(), name.get(), family.get())
+    errors = user_validator(user)
     if errors:
         msg.showerror("Errors", "\n".join(errors))
     else:
         msg.showinfo("Saved", "Person saved")
-        user_list.append(person)
+        user_list.append(user)
         write_to_file("user.dat", user_list)
         reset_form()
 
@@ -45,8 +45,8 @@ def table_select(x):
         user_name.set(selected_user[1])
         password.set(selected_user[2])
         status.set(selected_user[3])
-        name.set(selected_user[3])
-        family.set(selected_user[3])
+        name.set(selected_user[4])
+        family.set(selected_user[5])
 
 
 def edit_btn_click():
@@ -76,10 +76,15 @@ Label(window, text="Password").place(x=30, y=100)
 password = StringVar()
 Entry(window, textvariable=password).place(x=100, y=100)
 
+# # Status
+# Label(window, text="Status").place(x=30, y=140)
+# status = BooleanVar(value=True)
+# Entry(window, textvariable=status).place(x=100, y=140)
+
 # Status
 Label(window, text="Status").place(x=30, y=140)
 status = BooleanVar(value=True)
-Entry(window, textvariable=status).place(x=100, y=140)
+ttk.Combobox(window, values=["active", "inactive"],width=17).place(x=100, y=140)
 
 # Name
 Label(window, text="Name").place(x=30, y=180)
@@ -96,8 +101,8 @@ table.heading(1, text="Id")
 table.heading(2, text="User Name")
 table.heading(3, text="Password")
 table.heading(4, text="Status")
-table.heading(4, text="Name")
-table.heading(4, text="Family")
+table.heading(5, text="Name")
+table.heading(6, text="Family")
 
 table.column(1, width=60)
 table.column(2, width=120)
@@ -119,3 +124,4 @@ Button(window, text="Clear", width=6, command=reset_form).place(x=20, y=260, wid
 reset_form()
 
 window.mainloop()
+
