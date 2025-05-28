@@ -7,8 +7,8 @@ from validator import *
 user_list = read_from_file("user.dat")
 
 
-def load_data(person_list):
-    person_list = read_from_file("user.dat")
+def load_data(user_list):
+    user_list = read_from_file("user.dat")
     for row in table.get_children():
         table.delete(row)
 
@@ -84,7 +84,7 @@ Entry(window, textvariable=password).place(x=100, y=100)
 # Status
 Label(window, text="Status").place(x=30, y=140)
 status = BooleanVar(value=True)
-ttk.Combobox(window, values=["active", "inactive"],width=17).place(x=100, y=140)
+ttk.Combobox(window, values=["Active", "Passive"],width=17).place(x=100, y=140)
 
 # Name
 Label(window, text="Name").place(x=30, y=180)
