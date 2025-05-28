@@ -1,6 +1,8 @@
 from tkinter import *
 import tkinter.ttk as ttk
 import tkinter.messagebox as msg
+from urllib.parse import uses_relative
+
 from file_manager import *
 from validator import *
 
@@ -51,10 +53,25 @@ def table_select(x):
 
 def edit_btn_click():
     pass
+#     if table.selection():
+#         user_list.remove(table.selection())
+#         user = (id.get(), user_name.get(), password.get(), status.get(), name.get(), family.get())
+#         errors = user_validator(user)
+#         if errors:
+#             msg.showerror("Errors", "\n".join(errors))
+#         else:
+#             msg.showinfo("Saved", "Person saved")
+#             user_list.append(user)
+#             write_to_file("user.dat", user_list)
+#             reset_form()
 
 
 def remove_btn_click():
     pass
+    # remove_user = table.item(table.focus())["values"]
+    # if remove_user:
+    #     remove_user.remove(remove_user)
+
 
 
 window = Tk()
