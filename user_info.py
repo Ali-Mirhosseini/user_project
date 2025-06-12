@@ -29,7 +29,7 @@ def reset_form():
 
 
 def save_btn_click():
-    user = (id.get(), user_name.get(), password.get(), status.get(), name.get(), family.get())
+    user = User(id.get(), user_name.get(), password.get(), status.get(), name.get(), family.get())
     errors = user_validator(user)
     if errors:
         msg.showerror("Errors", "\n".join(errors))
@@ -41,10 +41,10 @@ def save_btn_click():
 
 
 def table_select(x):
-    selected_user = table.item(table.focus())["values"]
+    selected_user = User(*table.item(table.focus())["values"])
     if selected_user:
-        id.set(selected_user[0])
-        user_name.set(selected_user[1])
+        id.set(selected_user.id)
+        user_name.set(selected_user.name)
         password.set(selected_user[2])
         status.set(selected_user[3])
         name.set(selected_user[4])

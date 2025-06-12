@@ -3,7 +3,7 @@ import re
 
 def user_validator(user):
     errors = []
-    if not (type(user[0]) == int and user[0]>0):
+    if not (type(user.id) == int and user.id>0):
         errors.append('ID must be an integer > 0')
 
     if not (type(user[1]) == str and re.match(r"^[a-zA-Z\s]{3,30}$", user[1])):
